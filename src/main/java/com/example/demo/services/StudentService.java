@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.entities.Student;
 import com.example.demo.entities.StudentRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 
@@ -16,7 +17,7 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudents() {
+    public List getStudents() {
         return studentRepository.findAll();
     }
     public String addStudent(Student student) {
@@ -32,7 +33,6 @@ public class StudentService {
     }
     public String updateOne(Student newStudent,Long id){
         Student currentStudent = studentRepository.findById(id).get();
-        currentStudent.setId(newStudent.getId());
         currentStudent.setName(newStudent.getName());
         currentStudent.setEmail(newStudent.getEmail());
         currentStudent.setDate(newStudent.getDate());
